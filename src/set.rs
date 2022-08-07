@@ -28,6 +28,14 @@ pub struct Set {
 }
 
 impl Set {
+    #[allow(dead_code)]
+    pub fn from_code(code: &str) -> Result<Self, reqwest::Error> {
+        let response = reqwest::blocking::get(String::from("https://api.scryfall.com/sets/") + code).unwrap();
+        let raw_data: Result<Set, reqwest::Error> = response.json();
+        raw_data
+    }
+
+    #[allow(dead_code)]
     pub fn cards(&self) -> Result<Vec<Card>, reqwest::Error>  {
         let cards_response = reqwest::blocking::get(&self.search_uri)?;
         let cards_data: Result<CardData, reqwest::Error> = cards_response.json();

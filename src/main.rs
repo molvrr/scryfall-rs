@@ -1,15 +1,15 @@
 mod set;
 mod card;
+#[allow(unused_imports)]
 use set::*;
 use card::*;
+#[allow(unused_imports)]
 use serde::Deserialize;
 
 
-fn main() -> Result<(), reqwest::Error> {
-    let response = reqwest::blocking::get("https://api.scryfall.com/sets/aer")?;
-    let raw_data: Result<Set, reqwest::Error> = response.json();
-    let parsed_data = raw_data?;
-
-    println!("{:?}", parsed_data.cards());
-    Ok(())
+fn main() {
+    // let aer_set = Set::from_code("aer").unwrap();
+    // println!("{:?}", aer_set.cards());
+    let card = Card::from_id("f295b713-1d6a-43fd-910d-fb35414bf58a").unwrap();
+    println!("{:?}", card);
 }
