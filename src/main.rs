@@ -9,8 +9,8 @@ use serde::Deserialize;
 
 
 fn main() {
-    // let aer_set = Set::from_code("aer").unwrap();
-    // println!("{:?}", aer_set.cards());
-    let card = Card::from_id("f295b713-1d6a-43fd-910d-fb35414bf58a").unwrap();
-    println!("{}", card);
+    let aer_set = Set::from_code("aer").unwrap();
+    println!("{:#?}", aer_set.cards().unwrap());
+    // let card = Card::from_id("c896643e-eeef-49a6-a1ca-2577b55af2b0").unwrap();
+    // println!("{}", card);
 }

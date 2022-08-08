@@ -102,7 +102,40 @@ impl Card {
 
 impl std::fmt::Display for Card {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "id: {}\nname: {}\nlayout: {}", self.id, self.name, self.layout)
+        let mut str = String::new();
+        str.push_str(&format!("id: {}\n", self.id));
+        str.push_str(&format!("name: {}\n", self.name));
+        str.push_str(&format!("lang: {}\n", self.lang));
+        // str.push_str(&format!("object: {}\n", self.object));
+        // str.push_str(&format!("oracle_id: {}\n", self.oracle_id));
+        // str.push_str(&format!("prints_search_uri: {}\n", self.prints_search_uri));
+        // str.push_str(&format!("rulings_uri: {}\n", self.rulings_uri));
+        // str.push_str(&format!("scryfall_uri: {}\n", self.scryfall_uri));
+        // str.push_str(&format!("uri: {}\n", self.uri));
+        str.push_str(&format!("mana_cost: {:?}\n", self.mana_cost.as_ref().unwrap()));
+        str.push_str(&format!("cmc: {}\n", self.cmc));
+        str.push_str(&format!("layout: {}\n", self.layout));
+        str.push_str(&format!("highres_image: {}\n", self.highres_image));
+        str.push_str(&format!("color_identity: {:?}\n", self.color_identity));
+        str.push_str(&format!("keywords: {:?}\n", self.keywords));
+        // str.push_str(&format!("mtgo_id: {}\n", self.mtgo_id));
+        // str.push_str(&format!("mtgo_foil_id: {}\n", self.mtgo_foil_id));
+        // str.push_str(&format!("multiverse_ids: {}\n", self.multiverse_ids));
+        // str.push_str(&format!("tcgplayer_id: {}\n", self.tcgplayer_id));
+        // str.push_str(&format!("tcgplayer_etched_id: {}\n", self.tcgplayer_etched_id));
+        // str.push_str(&format!("cardmarket_id: {}\n", self.cardmarket_id));
+        // str.push_str(&format!("arena_id: {}\n", self.arena_id));
+        // str.push_str(&format!("all_parts: {}\n", self.all_parts));
+        // str.push_str(&format!("card_faces: {}\n", self.card_faces));
+        // str.push_str(&format!("color_indicator: {}\n", self.color_indicator));
+        // str.push_str(&format!("colors: {}\n", self.colors));
+        // str.push_str(&format!("edhrec_rank: {}\n", self.edhrec_rank));
+        // str.push_str(&format!("hand_modifier: {}\n", self.hand_modifier));
+        // str.push_str(&format!("legalities: {}\n", self.legalities));
+        // str.push_str(&format!("life_modifier: {}\n", self.life_modifier));
+        str.push_str(&format!("loyalty: {:?}\n", self.loyalty));
+        str.push_str(&format!("oracle_text: {:?}", self.oracle_text.as_ref().unwrap()));
+        write!(f, "{}", str)
     }
 }
 

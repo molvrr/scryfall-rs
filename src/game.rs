@@ -14,6 +14,8 @@ pub enum Color {
 pub enum Legality {
     Legal,
     NotLegal,
+    Restricted,
+    Banned,
 }
 
 #[derive(Eq, PartialEq, Deserialize, Debug, Hash)]
@@ -38,4 +40,18 @@ pub enum Format {
     Duel,
     OldSchool,
     PreModern,
+}
+
+
+impl std::fmt::Display for Color {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let color: &str = match *self {
+            Color::W => "white",
+            Color::U => "blue",
+            Color::B => "black",
+            Color::R => "red",
+            Color::G => "green",
+        };
+        write!(f, "{}", color)
+    }
 }
