@@ -1,9 +1,9 @@
+#![allow(dead_code)]
 use serde::Deserialize;
 use chrono::NaiveDate;
 use crate::card::*;
 
 #[derive(Debug, Deserialize)]
-#[allow(dead_code)]
 pub struct Set {
     pub id: String,
     pub code: String,
@@ -11,7 +11,6 @@ pub struct Set {
     pub tcgplayer_id: Option<usize>,
     pub name: String,
     pub set_type: String,
-    #[serde(serialize_with = "to_ts")]
     pub released_at: NaiveDate,
     pub block_code: Option<String>,
     pub block: Option<String>,
@@ -28,14 +27,12 @@ pub struct Set {
 }
 
 impl Set {
-    #[allow(dead_code)]
     pub fn from_code(code: &str) -> Result<Self, reqwest::Error> {
         let response = reqwest::blocking::get(String::from("https://api.scryfall.com/sets/") + code).unwrap();
         let raw_data: Result<Set, reqwest::Error> = response.json();
         raw_data
     }
 
-    #[allow(dead_code)]
     pub fn cards(&self) -> Result<Vec<Card>, reqwest::Error>  {
         let cards_response = reqwest::blocking::get(&self.search_uri)?;
         let cards_data: Result<CardData, reqwest::Error> = cards_response.json();

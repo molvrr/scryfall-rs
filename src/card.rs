@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 use crate::game::*;
 use std::collections::hash_map::HashMap;
 use serde::Deserialize;
@@ -40,7 +41,6 @@ pub struct CardFace {
     pub illustration_id: Option<String>,
 }
 
-#[allow(dead_code)]
 #[derive(Deserialize, Debug)]
 pub struct Part {
     id: String,
@@ -141,7 +141,7 @@ impl std::fmt::Display for Card {
 
 impl std::fmt::Display for Layout {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        match *self {
+        match self {
             Self::Normal => write!(f, "normal"),
             Self::Split => write!(f, "split"),
             Self::Flip => write!(f, "flip"),

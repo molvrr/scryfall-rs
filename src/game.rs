@@ -45,7 +45,7 @@ pub enum Format {
 
 impl std::fmt::Display for Color {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        let color: &str = match *self {
+        let color: &str = match self {
             Color::W => "white",
             Color::U => "blue",
             Color::B => "black",
